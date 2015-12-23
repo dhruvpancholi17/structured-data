@@ -9,13 +9,19 @@
     ))
 
 (defn spiff [v]
-  :-)
+  (cond
+    (< (count v) 3) "?"
+    :else (+ (get v 0) (get v 2))
+    ))
 
 (defn cutify [v]
-  :-)
+  (conj v "<3"))
 
 (defn spiff-destructuring [v]
-  :-)
+  (cond
+    (< (count v) 3) "?"
+    :else (let [[v1 v2 v3] v] (+ v1 v3))
+    ))
 
 (defn point [x y]
   [x y])

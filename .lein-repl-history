@@ -16,3 +16,62 @@
       (Math/pow x2 x2)
     ))
 (do-a-thing 2)
+(pr a)
+(pr "a")
+(pr "a" "b")
+(println "a" "b")
+(print "a" "b")
+(newline "a" "b")
+(newline)
+(println newline)
+(keyword foo)
+(keyword "foo")
+:foo
+(println :foo)
+(println foo)
+(println :foo)
+(keyword "?")
+[:foo 42 "bar" (+2 3)]
+(def vec [:foo 42 "bar" (+2 3)])
+([:foo 42 "bar" (+2 3)])
+(get ["a" "b" "c"] 1)
+(get ["a" "b" "c"] 0)
+(get ["x" "b" "c"] 0)
+(get ["x" "b" "c"] 15])
+(get ["x" "b" "c"] 15)
+(if (get ["x" "b" "c"] 15) true false)
+(defn spiff [v]
+  (cond
+    (< (count v) 3) ?
+    :else (+ (get v 0) (get v 2))
+    ))
+(defn spiff [v]
+  (cond
+    (< (count v) 3) "?"
+    :else (+ (get v 0) (get v 2))
+    ))
+(spiff [1 2 3])       ;=> 4
+(spiff [1 2 3 4 5 6]) ;=> 4
+(spiff [1 2])         ;=> ?
+(spiff [])            ;=> ?
+(conj [1 2 3] 4)
+(assoc [1 2 3 4] 2 "foo")
+(defn cutify [v]
+  (conj v "<3"))
+(cutify [])
+(cutify [1 2 3])
+(cutify ["a" "b"])
+(defn spiff-destructuring [v]
+  (cond
+    (< (count v) 3) "?"
+    :else (let [v1 v2 v3] v (+ v1 v3))
+    ))
+(defn spiff-destructuring [v]
+  (cond
+    (< (count v) 3) "?"
+    :else (let [[v1 v2 v3] v] (+ v1 v3))
+    ))
+(spiff [1 2 3])       ;=> 4
+(spiff [1 2 3 4 5 6]) ;=> 4
+(spiff [1 2])         ;=> ?
+(spiff [])            ;=> ?
