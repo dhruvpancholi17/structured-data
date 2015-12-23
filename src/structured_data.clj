@@ -1,7 +1,12 @@
 (ns structured-data)
 
+(defn do-a-thing-orig [x]
+  (Math/pow (+ x x) (+ x x)))
+
 (defn do-a-thing [x]
-  :-)
+  (let [x2 (+ x x)]
+      (Math/pow x2 x2)
+    ))
 
 (defn spiff [v]
   :-)
@@ -110,5 +115,11 @@
 
 (defn books-by-living-authors [books]
   :-)
+
+(defn hypotenuse [x y] 
+  (let [xx (* x x )
+        yy (* y y)]
+    (Math/sqrt (+ xx yy)))
+  )
 
 ; %________%
