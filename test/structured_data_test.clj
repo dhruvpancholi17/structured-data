@@ -121,3 +121,56 @@
 	(monotonic? [3 2 0 -3])  => true
 	(monotonic? [3 2 2])     => true;    Not strictly monotonic
 	(monotonic? [1 2 1 0])   => false)
+
+(facts "toggle" {:exercise 17
+				:points 1}
+	(toggle #{:a :b :c} :d) => #{:a :c :b :d}
+	(toggle #{:a :b :c} :a) => #{:c :b})
+
+(facts "contains-duplicates?" {:exercise 18
+				:points 1}
+	(contains-duplicates? [1 1 2 3 -40]) => true
+	(contains-duplicates? [1 2 3 -40]) => false
+	(contains-duplicates? [1 2 3 "a" "a"]) => true)
+
+(facts "new-books" {:exercise 19
+				:points 1}
+	(old-book->new-book {:title "The Little Schemer"
+                     :authors [friedman, felleisen]}) => {:title "The Little Schemer" :authors #{friedman, felleisen}}
+	(old-book->new-book {:title "Wild Seed", :authors [octavia]}) => {:title "Wild Seed", :authors #{octavia}})
+
+(facts "new-books" {:exercise 20
+				:points 1}
+	(has-author? cities china)             => true
+	(has-author? cities felleisen)         => false
+	(has-author? little-schemer felleisen) => true
+	(has-author? little-schemer friedman)  => true
+	(has-author? little-schemer octavia)   => false)
+
+(facts "all-authors" {:exercise 21
+				:points 1}
+	(all-author-names books) => #{"Matthias Felleisen" "China Miéville" "Octavia E. Butler" "Daniel Friedman"}
+	(all-author-names [cities, wild-seed]) => #{"China Miéville" "Octavia E. Butler"}
+	(all-author-names []) => #{}
+	)
+
+(facts "author->string" {:exercise 22
+				:points 1}
+	(author->string felleisen) ;=> "Matthias Felleisen"
+	(author->string friedman)  ;=> "Daniel Friedman (1944 - )"
+	(author->string octavia)   ;=> "Octavia E. Butler (1947 - 2006)"
+	)
+
+(facts "author->string" {:exercise 23
+				:points 1}
+	(author->string felleisen) ;=> "Matthias Felleisen"
+	(author->string friedman)  ;=> "Daniel Friedman (1944 - )"
+	(author->string octavia)   ;=> "Octavia E. Butler (1947 - 2006)"
+	)
+(facts "authors->string" {:exercise 24
+				:points 1}
+	(authors->string (:authors little-schemer))	=> "Daniel Friedman (1944 - ), Matthias Felleisen"
+	(authors->string #{octavia})         		=> "Octavia E. Butler (1947 - 2006)"
+	(authors->string #{})                		=> ""
+	(authors->string #{octavia, friedman}) 		=> "Daniel Friedman (1944 - ), Octavia E. Butler (1947 - 2006)"
+	)

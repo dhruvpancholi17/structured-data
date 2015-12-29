@@ -111,11 +111,6 @@
 (defn titles [books]
   (map :title books))
 
-; since a list of maps, and this from every map
-; Can be extracted the given key
-; (println (:name (get (:authors cities) 0)))
-; (println (author-names cities))
-
 (defn monotonic? [a-seq]
   (or (apply <= a-seq) (apply >= a-seq)))
 
@@ -123,40 +118,52 @@
   (apply str (repeat n "*")))
 
 (defn toggle [a-set elem]
-  :-)
+  (cond
+    (contains? a-set elem) (disj a-set elem)
+    :else (conj a-set elem)))
 
 (defn contains-duplicates? [a-seq]
-  :-)
+  (let [total_count (count a-seq)]
+    (not (= (count (set a-seq)) total_count))
+    ))
 
 (defn old-book->new-book [book]
-  :-)
-
-(defn has-author? [book author]
-  :-)
-
-(defn authors [books]
-  :-)
-
-(def books [cities, wild-seed, embassytown, little-schemer])
-
-(def s (seq [1 2 3]))
-; (println (seq {:a 42 :b "foo" :c ["ur" "dad"]}))
-; (println s)
-; (println (first s))
-; (println (rest s))
-; (println (cons 0 s))
+  (assoc book :authors (set (:authors book)))
+  )
 
 (defn author-names [book]
   (map :name (:authors book)))
 
+(defn has-author? [book author]
+  (let [authors (set (author-names book))]
+    (contains?  authors (:name author)))
+)
+
+(defn authors [books]
+  (map :name
+    (apply concat 
+      (map :authors books)
+    )
+  )
+)
+
+(def books [cities, wild-seed, embassytown, little-schemer])
+
 (defn all-author-names [books]
-  :-)
+  (let [author-names (fn [book] (map :name (:authors book)))]
+    (set (apply concat (map author-names books)))
+    ))
 
 (defn author->string [author]
-  :-)
+  (cond
+    (and (contains? author :birth-year) (contains? author :death-year)) (format "%s (%d - %d)" (:name author) (:birth-year author) (:death-year author))
+    (and (contains? author :birth-year) (not (contains? author :death-year))) (format "%s (%d - )" (:name author) (:birth-year author))
+    :else (format "%s" (:name author))
+    ))
 
 (defn authors->string [authors]
-  :-)
+  (apply str (interpose ", " (map author->string authors))
+    ))
 
 (defn book->string [book]
   :-)
