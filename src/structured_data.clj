@@ -186,11 +186,14 @@
   (let [filtered-books (filter (fn [book] (contains? (set (map :name (:authors book))) (:name author))) books)]
     filtered-books))
 
+(def authors #{china, felleisen, octavia, friedman})
+
 (defn author-by-name [name authors]
-  :-)
+  (first (filter (fn [author] (= (:name author) name)) authors)
+    ))
 
 (defn living-authors [authors]
-  :-)
+  (filter (fn [author] (not (contains? author :death-year))) authors))
 
 (defn has-a-living-author? [book]
   :-)

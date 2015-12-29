@@ -1,4 +1,3 @@
-(rectangle [1 1] [5 1])
 exit
 (rectangle [1 1] [5 1])
 (use 'structured-data)
@@ -498,3 +497,4 @@ books
 (set (map :name (:authors book)))
 (def book cities)
 (set (map :name (:authors book)))
+(def authors #{china, felleisen, octavia, friedman})
