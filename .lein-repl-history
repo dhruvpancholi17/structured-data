@@ -1,40 +1,3 @@
-(spiff [1 2 3 4 5 6]) ;=> 4
-(spiff [1 2])         ;=> ?
-(spiff [])            ;=> ?
-(defn sum-pairs [[x1 y1] [x2 y2]]
-  [(+ x1 x2) (+ y1 y2)])
-(sum-pairs [1 2] [3 4])
-(use 'structured-data)
-(spiff [1 2 4])
-(spiff [])
-(spiff [1 2 3])
-(spiff [1 2])
-ls
-exit
-(:use structured-data)
-(:use 'structured-data)
-(use 'structured-data)
-(use structured-data)
-(use 'structured-data)
-height
-(height (rectangle [1 1] [5 1]))
-(use 'structured-data)
-(height (rectangle [1 1] [5 1]))
-(width (rectangle [1 1] [5 1]))
-(rectangle [1 1] [5 1])
-(use 'structured-data)
-(width (rectangle [1 1] [5 1]))
-(use 'structured-data)
-(rectangle [1 1] [5 1])
-exit
-(rectangle [1 1] [5 1])
-(use 'structured-data)
-exit
-(use 'structured-data)
-exit
-(use 'structured-data)
-(rectangle [1 1] [5 1])
-(use 'structured-data)
 (rectangle [1 1] [5 1])
 exit
 (rectangle [1 1] [5 1])
@@ -498,3 +461,40 @@ authors->string author
 exit
 load(load-file "./src/structured_data.clj")
 authors->string author
+(pos? 1)
+(pos? -1)
+(filter pos? [-4 6 -2 7 -8 3])
+(filter (fn [x] (> (count x) 2)) ["ff" "f" "ffffff" "fff"])
+books
+(def china {:name "China Miéville", :birth-year 1972})
+(def octavia {:name "Octavia E. Butler"
+              :birth-year 1947
+              :death-year 2006})
+(def friedman {:name "Daniel Friedman" :birth-year 1944})
+(def felleisen {:name "Matthias Felleisen"})
+(def cities {:title "The City and the City" :authors [china]})
+(def wild-seed {:title "Wild Seed", :authors [octavia]})
+(def embassytown {:title "Embassytown", :authors [china]})
+(def little-schemer {:title "The Little Schemer"
+                     :authors [friedman, felleisen]})
+(:authors books)
+(:authors book)
+(:authors books)
+(:authors cities)
+:name (:authors cities)
+(:name (:authors cities))
+(map :name (:authors cities))
+(def books [cities wild-seed embassytown little-schemer])
+(map :name (:authors books))
+(map :author books)
+(map :authors books)
+(map :name (map :authors books))
+(apply concat (map :authors books))
+(map :name (apply concat (map :authors books)))
+(contains? (map :name (apply concat (map :authors books))) "Octavia E. Butler")
+(contains? (map :name (apply concat (map :authors books))) ["Octavia E. Butler"])
+(set (map :name (apply concat (map :authors books))))
+(filter (fn [book] (contains? (set (map :name (apply concat (:authors book)))) (:name author))) books)
+(set (map :name (:authors book)))
+(def book cities)
+(set (map :name (:authors book)))

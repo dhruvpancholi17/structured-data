@@ -183,7 +183,8 @@
   )
 
 (defn books-by-author [author books]
-  :-)
+  (let [filtered-books (filter (fn [book] (contains? (set (map :name (:authors book))) (:name author))) books)]
+    filtered-books))
 
 (defn author-by-name [name authors]
   :-)
