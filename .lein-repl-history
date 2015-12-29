@@ -75,3 +75,405 @@
 (spiff [1 2 3 4 5 6]) ;=> 4
 (spiff [1 2])         ;=> ?
 (spiff [])            ;=> ?
+(defn sum-pairs [[x1 y1] [x2 y2]]
+  [(+ x1 x2) (+ y1 y2)])
+(sum-pairs [1 2] [3 4])
+(use 'structured-data)
+(spiff [1 2 4])
+(spiff [])
+(spiff [1 2 3])
+(spiff [1 2])
+ls
+exit
+(:use structured-data)
+(:use 'structured-data)
+(use 'structured-data)
+(use structured-data)
+(use 'structured-data)
+height
+(height (rectangle [1 1] [5 1]))
+(use 'structured-data)
+(height (rectangle [1 1] [5 1]))
+(width (rectangle [1 1] [5 1]))
+(rectangle [1 1] [5 1])
+(use 'structured-data)
+(width (rectangle [1 1] [5 1]))
+(use 'structured-data)
+(rectangle [1 1] [5 1])
+exit
+(rectangle [1 1] [5 1])
+(use 'structured-data)
+exit
+(use 'structured-data)
+exit
+(use 'structured-data)
+(rectangle [1 1] [5 1])
+(use 'structured-data)
+(rectangle [1 1] [5 1])
+exit
+(rectangle [1 1] [5 1])
+(use 'structured-data)
+exit
+(use 'structured-data)
+(rectangle [1 1] [5 1])
+(width (rectangle [1 1] [5 1]))
+exit
+(width (rectangle [1 1] [5 1]))
+(use 'structured-data)
+(width (rectangle [1 1] [5 1]))
+exit
+(defn square? [rectangle]
+  (let [[[x1 y1] [x2 y2]] rectangle]
+    (cond
+      (= (- x2 x1) (- y2 y1)) true)
+      :else false
+    ))
+(square? (rectangle [1 1] [2 2]))
+(defn rectangle [bottom-left top-right]
+  [bottom-left top-right])
+(square? (rectangle [1 1] [2 2]))
+(defn square? [rectangle]
+  (let [[[x1 y1] [x2 y2]] rectangle]
+    (print (- x2 x1))
+    (print (- y2 y1))
+    (cond
+      (= (- x2 x1) (- y2 y1)) true)
+      :else false
+    ))
+(square? (rectangle [1 1] [2 2]))
+(defn square? [rectangle]
+  (let [[[x1 y1] [x2 y2]] rectangle]
+    (print (- x2 x1))
+    (print (- y2 y1))
+    (cond
+      (= (- x2 x1) (- y2 y1)) true
+      :else false)
+    ))
+(square? (rectangle [1 1] [2 2]))
+exit
+{"foo" 42}
+(def num {1 "one" 2 "two"})
+(def num_map {1 "one" 2 "two"})
+(get num_map 1)
+(def num_map {1 "one" 2 "two" :three "3three"})
+(get num_map "three")
+(get num_map :three)
+(count ":):")
+(count ":)")
+(count {:name "China Mie´ville" :birth-year 1972})
+(def china {:name "China Miéville", :birth-year 1972})
+(def octavia {:name "Octavia E. Butler"
+              :birth-year 1947
+              :death-year 2006})
+(def friedman {:name "Daniel Friedman" :birth-year 1944})
+(def felleisen {:name "Matthias Felleisen"})
+(def cities {:title "The City and the City" :authors [china]})
+(def wild-seed {:title "Wild Seed", :authors [octavia]})
+(def embassytown {:title "Embassytown", :authors [china]})
+(def little-schemer {:title "The Little Schemer"
+                     :authors [friedman, felleisen]})
+(defn title-length [book]
+  (print china))
+(title-length 123)
+(defn title-length [book]
+  (count (get book :name)))
+(title-length china)
+(defn multiple-authors? [book]
+  (> (count (get book :title)) 1))
+(multiple-authors? little-schemer)
+(multiple-authors? embassytown)
+(defn multiple-authors? [book]
+  (> (count (get book :authors)) 1))
+(multiple-authors? embassytown)
+(multiple-authors? little-schemer)
+exit
+(count nil)
+(count "")
+exit
+(!= nil nil)
+(= nil nil)
+(not (= nil nil))
+(contains? {:a 1}
+:a)
+(contains? {:a 1} :b)
+exit
+(def little-schemer {:title "The Little Schemer"
+                     :authors [friedman, felleisen]})
+(def friedman {:name "Daniel Friedman" :birth-year 1944})
+(def felleisen {:name "Matthias Felleisen"})
+(def little-schemer {:title "The Little Schemer"
+                     :authors [friedman, felleisen]})
+(defn add-author [book new-author]
+  (conj (get book :authors) new-author))
+(add-author little-schemer {:name "Gerald J. Sussman"})
+(add-author {:authors [{:name "Juhana"}]} {:name "Jani"})
+(defn add-author [book new-author]
+  (conj (get book :authors) new-author)
+  book)
+(add-author {:authors [{:name "Juhana"}]} {:name "Jani"})
+(defn add-author [book new-author]
+  (assoc :authors (conj (get book :authors) new-author))
+)
+(defn add-author [book new-author]
+  (assoc :authors (conj (get book :authors) new-author))
+  )
+(add-author {:authors [{:name "Juhana"}]} {:name "Jani"})
+(defn add-author [book new-author]
+  (assoc book :authors (conj (get book :authors) new-author))
+  )
+(add-author {:authors [{:name "Juhana"}]} {:name "Jani"})
+exit
+(defn alive? [author]
+  (contains? author :death-year)
+  )
+exit
+(ns structured-data)
+(def china {:name "China Miéville", :birth-year 1972})
+(def octavia {:name "Octavia E. Butler"
+              :birth-year 1947
+              :death-year 2006})
+(def friedman {:name "Daniel Friedman" :birth-year 1944})
+(def felleisen {:name "Matthias Felleisen"})
+(def cities {:title "The City and the City" :authors [china]})
+(def wild-seed {:title "Wild Seed", :authors [octavia]})
+(def embassytown {:title "Embassytown", :authors [china]})
+(def little-schemer {:title "The Little Schemer"
+                     :authors [friedman, felleisen]})
+(defn do-a-thing-orig [x]
+  (Math/pow (+ x x) (+ x x)))
+(defn do-a-thing [x]
+  (let [x2 (+ x x)]
+      (Math/pow x2 x2)
+    ))
+(defn spiff [v]
+  (cond
+    (< (count v) 3) "?"
+    :else (+ (get v 0) (get v 2))
+    ))
+(defn cutify [v]
+  (conj v "<3"))
+(defn spiff-destructuring [v]
+  (cond
+    (< (count v) 3) "?"
+    :else (let [[v1 v2 v3] v] (+ v1 v3))
+    ))
+(defn sum-pairs [[x1 y1] [x2 y2]]
+  [(+ x1 x2) (+ y1 y2)])
+(defn point [x y]
+  [x y])
+(defn rectangle [bottom-left top-right]
+  [bottom-left top-right])
+(defn width [rectangle]
+  (let [[[x1 y1] [x2 y2]] rectangle]
+    (- x2 x1))
+  )
+(defn height [rectangle]
+  (let [[[x1 y1] [x2 y2]] rectangle]
+    (- y2 y1))
+  )
+(defn square? [rectangle]
+  (let [[[x1 y1] [x2 y2]] rectangle]
+    (cond
+      (= (- x2 x1) (- y2 y1)) true
+      :else false)
+    ))
+(defn area [rectangle]
+  (let [[[x1 y1] [x2 y2]] rectangle]
+    (* (- x2 x1) (- y2 y1))
+    ))
+(defn contains-point? [rectangle point]
+  (let [[[x1 y1] [x2 y2]] rectangle
+        [x3 y3] point]
+    (cond
+      (and (<= x1 x3 x2) (<= y1 y3 y2)) true
+      :else false)
+    ))
+(defn contains-rectangle? [outer inner]
+  (let [[[x1 y1] [x2 y2]] outer
+        [[x3 y3] [x4 y4]] inner]
+    (cond
+      (and (<= x1 x3 x4 x2) (<= y1 y3 y4 y2)) true
+      :else false)
+    ))
+(defn title-length [book]
+  (count (get book :title)))
+(defn author-count [book]
+  (count (get book :authors)))
+(defn multiple-authors? [book]
+  (> (count (get book :authors)) 1))
+(defn add-author [book new-author]
+  (assoc book :authors (conj (get book :authors) new-author))
+  )
+(defn alive? [author]
+  (not (contains? author :death-year))
+  )
+(defn element-lengths [collection]
+  :-)
+(defn second-elements [collection]
+  :-)
+(defn titles [books]
+  :-)
+(defn monotonic? [a-seq]
+  :-)
+(defn stars [n]
+  :-)
+(defn toggle [a-set elem]
+  :-)
+(defn contains-duplicates? [a-seq]
+  :-)
+(defn old-book->new-book [book]
+  :-)
+(defn has-author? [book author]
+  :-)
+(defn authors [books]
+  :-)
+(defn all-author-names [books]
+  :-)
+(defn author->string [author]
+  :-)
+(defn authors->string [authors]
+  :-)
+(defn book->string [book]
+  :-)
+(defn books->string [books]
+  :-)
+(defn books-by-author [author books]
+  :-)
+(defn author-by-name [name authors]
+  :-)
+(defn living-authors [authors]
+  :-)
+(defn has-a-living-author? [book]
+  :-)
+(defn books-by-living-authors [books]
+  :-)
+(defn hypotenuse [x y] 
+  (let [xx (* x x )
+        yy (* y y)]
+    (Math/sqrt (+ xx yy)))
+  )
+; %________%
+load(load-file " src/structured_data.clj")
+load(load-file structured-data.clj)
+load(load-file "structured-data.clj")
+load(load-file "structured_data.clj")
+load(load-file "./src/structured_data.clj")
+clear
+books
+load(load-file "./src/structured_data.clj")
+books
+load(load-file "./src/structured_data.clj")
+(map inc [1 2 3])
+(map + [1 2 3] [4 5 6])
+(map + [1 2 3] (iterate inc 1))
+(map + [1 2 3] (iterate inc 2))
+(iterate inc 2)
+(map #(str "Hello " %s " !") [1,2,3])
+(map #(str "Hello " % " !") [1,2,3])
+(map (str "Hello " % " !") [1,2,3])
+(map #(str "Hello " % " !") [1,2,3])
+load(load-file "./src/structured_data.clj")
+(munge "assoc!")
+(munge "assoc!@")
+(munge "assoc!@$")
+(munge "assoc!@$%")
+(munge "assoc!@$%(")
+(munge "assoc!@$%_")
+(munge "assoc!@$%*")
+exit
+(defn element-lengths [collection]
+  (map count collection))
+(element-lengths ["foo" "bar" "" "quux"])
+(element-lengths ["foo" "bar" "" "quux"])  => (3 3 0 4)
+(1 2 3)
+(get [1 2 3] 3)
+(second [1 2 3])
+(second [1 ])
+load(load-file "./src/structured_data.clj")
+(defn author-names [book]
+  (map :name (:authors book)))
+(author-names china)
+(author-names [china])
+(def china {:name "China Miéville", :birth-year 1972})
+(author-names [china])
+(def cities {:title "The City and the City" :authors [china]})
+(author-names [cities])
+(:authors [china])
+(:authors [cities])
+(:authors cities)
+(map :name (:authors cities))
+(author-names cities)
+(author-names littl)
+(def little-schemer {:title "The Little Schemer"
+                     :authors [friedman, felleisen]})
+(author-names littl)
+(author-names little-schemer)
+load(load-file "./src/structured_data.clj")
+(author-names little-schemer)
+(defn author-names [book]
+  (map :name (:authors book)))
+(author-names little-schemer)
+(map :name (:authors little-schemer)))
+(map :name (:authors little-schemer))
+(:authors little-schemer)
+(def little-schemer {:title "The Little Schemer"
+                     :authors [friedman, felleisen]})
+(def little-schemer {:title "The Little Schemer"(def china {:name "China Miéville", :birth-year 1972})
+(def octavia {:name "Octavia E. Butler"
+              :birth-year 1947
+              :death-year 2006})
+(def friedman {:name "Daniel Friedman" :birth-year 1944})
+(def felleisen {:name "Matthias Felleisen"})
+(def cities {:title "The City and the City" :authors [china]})
+(def wild-seed {:title "Wild Seed", :authors [octavia]})
+(def embassytown {:title "Embassytown", :authors [china]})
+(def little-schemer {:title "The Little Schemer"
+                     :authors [friedman, felleisen]})
+(def books [cities, wild-seed, embassytown, little-schemer])
+(:authors little-schemer)
+little-schemer
+(def china {:name "China Miéville", :birth-year 1972})
+(def octavia {:name "Octavia E. Butler"
+              :birth-year 1947
+              :death-year 2006})
+(def friedman {:name "Daniel Friedman" :birth-year 1944})
+(def felleisen {:name "Matthias Felleisen"})
+(def cities {:title "The City and the City" :authors [china]})
+(def wild-seed {:title "Wild Seed", :authors [octavia]})
+(def embassytown {:title "Embassytown", :authors [china]})
+(def little-schemer {:title "The Little Schemer"
+                     :authors [friedman, felleisen]})
+(def books [cities, wild-seed, embassytown, little-schemer])
+little-schemer
+(:authors little-schemer)
+(map :name (:authors book)
+)
+(map :name (:authors book))
+(author-names china)
+(author-names cities)
+(author-names little-schemer)
+(println (author-names cities))
+(author-names cities)
+load(load-file "./src/structured_data.clj")
+(author-names cities)
+load(load-file "./src/structured_data.clj")
+(+ [1 2 3] [4 5 6])
+(apply + [1 2 3] [4 5 6])
+(map + [1 2 3] [4 5 6])
+(repeat 1 5)
+(repeat 5 5)
+(str (repeat 5 5))
+(str (repeat 5 "*"))
+(str [1 2 3])
+(apply str (repeat 5 "*"))
+(apply str (repeat 5 "*\n"))
+load(load-file "./src/structured_data.clj")
+(defn stars [n]
+  (apply str (repeat 5 "*")))
+(stars 5)
+(stars 1)
+(stars 1)(defn monotonic? [a-seq]
+  (apply <= a-seq))
+(monotonic? [1 2 3])
+(monotonic? [1 4 3])
+(monotonic? [5 4 3])
